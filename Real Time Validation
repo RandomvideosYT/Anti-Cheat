@@ -1,0 +1,21 @@
+function validateActions(action, value) {
+  fetch("/validate-action", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action, value }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.valid) {
+        console.warn("Cheating detected! Invalid action.");
+        alert("Cheating detected! Disconnecting player.");
+        location.reload(); // Disconnect or ban the player
+      }
+    });
+}
+
+// Example: Validate a player's jump action
+function playerJump() {
+  const jumpHeight = 100; // Example value
+  validateActions("jump", jumpHeight);
+}
