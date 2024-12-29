@@ -1,0 +1,5 @@
+# Install Terser
+npm install terser -g
+
+# Obfuscate your JavaScript file
+terser game.js -o game.min.js
