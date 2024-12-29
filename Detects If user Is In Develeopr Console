@@ -1,0 +1,12 @@
+// Detect if the user opens the DevTools
+function detectDevTools() {
+  const devToolsOpened = /./;
+  devToolsOpened.toString = function () {
+    alert("Cheating detected! DevTools usage is not allowed.");
+    location.reload(); // Take action if DevTools is opened
+  };
+  console.log(devToolsOpened);
+}
+
+// Call the detection function periodically
+setInterval(detectDevTools, 1000);
