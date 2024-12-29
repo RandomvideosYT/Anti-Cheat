@@ -1,0 +1,11 @@
+// Monitor for unauthorized script elements
+const originalScripts = document.scripts;
+
+setInterval(() => {
+  const currentScripts = document.scripts;
+  if (currentScripts.length > originalScripts.length) {
+    console.warn("Cheating detected: Unauthorized script detected.");
+    alert("Cheating detected! Reloading the game.");
+    location.reload();
+  }
+}, 5000);
