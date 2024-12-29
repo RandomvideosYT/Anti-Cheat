@@ -1,0 +1,19 @@
+const express = require("express");
+const app = express();
+
+app.use(express.json());
+
+app.post("/validate-action", (req, res) => {
+  const { action, value } = req.body;
+
+  // Validate actions and values
+  if (action === "jump" && (value > 50 || value < 0)) {
+    console.log("Cheating detected: Invalid jump height.");
+    return res.status(400).send({ valid: false });
+  }
+
+  console.log("Action validated successfully.");
+  res.send({ valid: true });
+});
+
+app.listen(3000, () => console.log("Server running on port 3000"));
