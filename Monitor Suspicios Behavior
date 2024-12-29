@@ -1,0 +1,22 @@
+let score = 0;
+
+// Monitor player score
+function increaseScore(points) {
+  score += points;
+  validateScore();
+}
+
+// Validate the score
+function validateScore() {
+  if (score > 100000) {
+    console.warn("Cheating detected: Unrealistic score.");
+    alert("Cheating detected! Ending game.");
+    resetGame();
+  }
+}
+
+// Reset the game state
+function resetGame() {
+  score = 0;
+  location.reload(); // Reload or reset the game
+}
