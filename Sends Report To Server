@@ -1,0 +1,26 @@
+// Example: Client-Side Cheating Detection
+function reportCheating(reason) {
+  const userId = getUserId(); // Replace with your user ID or username logic
+  fetch("/ban-user", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId, reason }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.banned) {
+        alert("You have been banned for cheating.");
+        location.reload(); // Reload or redirect the player
+      }
+    })
+    .catch((error) => console.error("Failed to report cheating:", error));
+}
+
+// Example usage: Detecting suspicious score
+let score = 0;
+function validateScore() {
+  if (score > 100000) {
+    console.warn("Cheating detected: Unrealistic score.");
+    reportCheating("Unrealistic score");
+  }
+}
